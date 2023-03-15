@@ -73,7 +73,7 @@ const puppeteer = require('puppeteer');
 			//Block external requests and images, as we don't need get to get the rendered CSS
 			var host = process.argv[3];
 			var regEx = new RegExp(host.replace(".","\\.") + '|file:|googleapis|data:');
-			if (regEx.test(request.url()) || /png|jpg|jpeg/.test(request.url())) {
+			if (!regEx.test(request.url()) || /png|jpg|jpeg/.test(request.url())) {
 				request.abort();
 			} else {
 				request.continue()
