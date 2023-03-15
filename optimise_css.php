@@ -193,6 +193,7 @@ class LCOptimise {
 			$original_css        = '';
 			foreach ( $css_array as $css_file ) {
 				$this->log( 'File is ' . basename( $css_file ) );
+				$css_file      = preg_replace( '@^\/\/@', 'https://', $css_file );
 				$original_css .= file_get_contents( $css_file );
 			}
 			$original_css_length = strlen( $original_css );
